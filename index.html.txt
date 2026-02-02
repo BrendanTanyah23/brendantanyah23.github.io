@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For My Pinky ❤️</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to bottom, #ffb6c1, #ffe4e1);
+    text-align: center;
+    padding: 30px;
+    overflow-x: hidden;
+}
+
+#login, #content {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 25px;
+    border-radius: 18px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+input {
+    padding: 10px;
+    width: 80%;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+button {
+    padding: 12px 25px;
+    margin-top: 15px;
+    background: #ff4d6d;
+    border: none;
+    color: white;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: #e63950;
+}
+
+img {
+    width: 90%;
+    border-radius: 15px;
+    margin-top: 15px;
+}
+
+/* 💗 SONG BUTTONS */
+.song-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #ff4d6d, #ff85a2);
+    color: white;
+    padding: 14px 22px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 12px 0;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.song-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(255, 77, 109, 0.4);
+}
+
+/* 🌸 FLOATING HEARTS */
+.heart {
+    position: fixed;
+    bottom: -20px;
+    font-size: 24px;
+    animation: floatUp 6s linear infinite;
+    opacity: 0.7;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0); opacity: 0.8; }
+    100% { transform: translateY(-100vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🔐 SECRET CODE -->
+<div id="login">
+    <h2>💖 Enter the Secret Code 💖</h2>
+    <input type="password" id="code" placeholder="Secret code">
+    <br>
+    <button onclick="unlock()">Unlock 💌</button>
+    <p id="error" style="color:red;"></p>
+</div>
+
+<!-- 💌 CONTENT -->
+<div id="content" style="display:none;">
+    <h1>For My Pinky 💕</h1>
+
+    <span id="letter">
+My Pinky 💕,<br><br>
+
+These past 6 months with you have changed me in the softest, most beautiful way. Loving you feels natural, comforting, and exciting all at once 🥰. You’ve taught me how to love deeper, appreciate more, and smile even on days I didn’t think I could.<br><br>
+
+You are my safe place, my favorite thought, and the person who makes my heart feel at home 💖. I love your laugh, your cute ways, your heart, and even the little things you probably don’t realize I notice.<br><br>
+
+Even though we couldn’t celebrate together in person, I wanted to give you something special. That’s why I made this little website just for you 💻❤️ — something you can always come back to.<br><br>
+
+Whenever you think of us, miss me, or need a reminder of how deeply you’re loved, this place will always be here 💕.<br><br>
+
+I love you endlessly, Pinky 💘  
+Always yours 😘
+    </span>
+
+    <h2>📸 Us</h2>
+    <img src="photo1.jpg">
+    <img src="photo2.jpg">
+
+    <h2>🎶 Songs for You, Pinky 💕</h2>
+
+    <a href="https://open.spotify.com/track/29iva9idM6rFCPUlu7Rhxl?si=ZOhrsWiWSgy2hktd6LXavQ"
+       target="_blank"
+       class="song-button">
+🚗💖 This song makes me think of you when we used to drive together
+    </a><br>
+
+    <a href="https://open.spotify.com/track/4gOXXoIOkur9FZsRpReV9x?si=7nLpvybjS6meHhKKydRvhg"
+       target="_blank"
+       class="song-button">
+💞🎶 This is a song that makes me love you more every time I listen to it
+    </a><br>
+
+    <a href="https://open.spotify.com/track/4Pbg79cTBu4vgSphoyNq3j?si=r6CKsocQTISHbCCjUi-qHg"
+       target="_blank"
+       class="song-button">
+🌍✨ Listen to this when you’re thinking about the adventures we used to have
+    </a>
+</div>
+
+<script>
+/* ⌨️ TYPING */
+const text = document.getElementById("letter").innerHTML;
+document.getElementById("letter").innerHTML = "";
+let i = 0;
+
+function typeLetter() {
+    if (i < text.length) {
+        document.getElementById("letter").innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeLetter, 30);
+    }
+}
+
+/* 💖 HEARTS */
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.className = "heart";
+    heart.innerText = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+}
+
+/* 🔐 UNLOCK */
+function unlock() {
+    const correctCode = "2507";
+    const entered = document.getElementById("code").value;
+
+    if (entered === correctCode) {
+        document.getElementById("login").style.display = "none";
+        document.getElementById("content").style.display = "block";
+        typeLetter();
+        setInterval(createHeart, 500);
+        setTimeout(() => alert("I love you so much, Pinky 💕"), 4000);
+    } else {
+        document.getElementById("error").innerText = "Wrong code 😢";
+    }
+}
+</script>
+
+</body>
+</html>
